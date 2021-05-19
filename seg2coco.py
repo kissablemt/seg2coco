@@ -68,9 +68,10 @@ def main():
         "annotations": [],
         "categories": [],
     }
-    seg_dir = "tmp/seg"
+    seg_dir = "COCO/tmp/inst"
     listdir = os.listdir(seg_dir)
     listdir.sort(key=lambda x: int(x.split('.')[0]))
+
     i = 0
     for filename in listdir:
         filepath = os.path.join(seg_dir, filename)
@@ -94,15 +95,14 @@ def main():
             i += 1
             if i % 100 == 0:
                 print("%d is done." % i)
-    #         if i == 10:
-    #             break
+
         except Exception as e:
             print(e)
 
     coco_json["categories"] = [
         {"id": 1, "name": "target", "supercategory": "target"}
     ] 
-    with open("annotations/{}.json".format(int(time.time() * 1000)), "w") as f:
+    with open("COCO/annotations/{}.json".format(int(time.time() * 1000)), "w") as f:
         f.write(json.dumps(coco_json))
 
     
