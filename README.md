@@ -1,5 +1,5 @@
 # Segmentations to COCO Annotation
-When there are many files, it is recommended to write to the file every time a picture is processed
+When there are many files, it is recommended to write to the json file every time a picture is processed
 
 ## Usage
 ### `seg2coco.py`
