@@ -1,14 +1,9 @@
 import numpy as np
-import pandas as pd
 import os
 import cv2
 import json
-from matplotlib import pyplot as plt
-import scipy.io as scio
-from PIL import Image  
 from pycocotools import mask
-from pycocotools.coco import COCO
-from skimage import measure, io
+from skimage import measure
 import time
 
 def test_time(start_or_end):
@@ -71,7 +66,7 @@ def gen_anno(inst_img, sem_img, image_id):
         annotations.append(annotation)
     return annotations
 
-def main():
+def seg2coco(inst_dir, sem_dir, categories, json_filepath):
     coco_json = {
         "info": {},
         "licenses": {},
@@ -79,11 +74,9 @@ def main():
         "annotations": [],
         "categories": [],
     }
-    inst_dir = "COCO/tmp/inst"
     listdir = os.listdir(inst_dir)
     listdir.sort(key=lambda x: int(x.split('.')[0]))
-
-    sem_dir = "COCO/tmp/sem"
+    
     i = 0
     for filename in listdir:
         try:
@@ -114,19 +107,23 @@ def main():
         except Exception as e:
             print(e)
 
-    coco_json["categories"] = [
+    coco_json["categories"] = categories
+
+    os.makedirs(os.path.dirname(json_filepath), exist_ok=True)
+    with open(json_filepath, "w") as f:
+        f.write(json.dumps(coco_json))
+
+def main():
+    inst_dir = "COCO/tmp/inst"
+    sem_dir = "COCO/tmp/sem"
+    categories = [
         {"id": 1, "name": "cube", "supercategory": "object"},
         {"id": 2, "name": "monkey", "supercategory": "object"},
     ] 
+    json_filepath = "COCO/annotations/test.json"
 
-    json_file = "COCO/annotations/{}.json".format(int(time.time() * 1000))
-    print(json.dumps(coco_json))
-    
-    os.makedirs(os.path.dirname(json_file), exist_ok=True)
-    with open(json_file, "w") as f:
-        f.write(json.dumps(coco_json))
+    seg2coco(inst_dir, sem_dir, categories, json_filepath)
 
-    
 
 if __name__ == '__main__':
     test_time(0)
