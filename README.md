@@ -17,7 +17,8 @@ When there are many files, it is recommended to write to the file every time a p
 
 - `json_filepath`: Result annotations in json.
 
-<br />
+<br /> 
+
 ### `show_anns.py`
 ![Cube](docs/images/cube.jpg)
 ![Monkey](docs/images/monkey.jpg)
