@@ -20,5 +20,6 @@ When there are many files, it is recommended to write to the json file every tim
 <br /> 
 
 ### `show_anns.py`
-![Cube](docs/images/cube.jpg)
+![Cube](docs/images/cube.jpg) 
+
 ![Monkey](docs/images/monkey.jpg)
