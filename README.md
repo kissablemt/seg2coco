@@ -34,6 +34,7 @@ When there are many files, it is recommended to write to the file every time a p
         - `cv2.CHAIN_APPROX_TC89_KCOS`: Lowest accuracy, but save space.
     
     ![Compare](docs/images/find_contours.png)
+    <br />
 
 ### `show_anns.py`
 ![Cube](docs/images/cube.jpg)
