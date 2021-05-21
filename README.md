@@ -26,16 +26,20 @@ When there are many files, it is recommended to write to the file every time a p
     [Method Detail](https://vovkos.github.io/doxyrest-showcase/opencv/sphinx_rtd_theme/enum_cv_ContourApproximationModes.html#doxid-d3-dc0-group-imgproc-shape-1gga4303f45752694956374734a03c54d5ffaf7d9a3582d021d5dadcb0e37201a62f8)
 
         - `cv2.CHAIN_APPROX_NONE`: Second accuracy. 
-        ![](docs/images/2-CHAIN_APPROX_NONE.jpg) 
+         
+            ![](docs/images/2-CHAIN_APPROX_NONE.jpg) 
         
         - `cv2.CHAIN_APPROX_SIMPLE`: Third accuracy. 
-        ![](docs/images/3-CHAIN_APPROX_SIMPLE.jpg) 
+         
+            ![](docs/images/3-CHAIN_APPROX_SIMPLE.jpg) 
         
         - `cv2.CHAIN_APPROX_TC89_L1`: Fourth accuracy. 
-        ![](docs/images/4-CHAIN_APPROX_TC89_L1.jpg) 
+         
+            ![](docs/images/4-CHAIN_APPROX_TC89_L1.jpg) 
         
         - `cv2.CHAIN_APPROX_TC89_KCOS`: Lowest accuracy, but save space. 
-        ![](docs/images/5-CHAIN_APPROX_TC89_KCOS.jpg) 
+         
+            ![](docs/images/5-CHAIN_APPROX_TC89_KCOS.jpg) 
         
     <br /> 
     
