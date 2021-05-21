@@ -1,4 +1,7 @@
 # Segmentations to COCO Annotation
+
+Reference from [cocoapi issues](https://github.com/cocodataset/cocoapi/issues/131) 
+
 When there are many files, it is recommended to write to the json file every time a picture is processed
 
 ## Usage
