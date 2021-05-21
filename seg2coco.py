@@ -15,6 +15,7 @@ def test_time(start_or_end):
         test_time.start = time.time()
 
 def gen_anno(inst_img, sem_img, image_id):
+    # https://hub.fastgit.org/cocodataset/cocoapi/issues/131
     try:
         if inst_img.shape[:2] != sem_img.shape[:2]:
             raise Exception
@@ -45,7 +46,11 @@ def gen_anno(inst_img, sem_img, image_id):
         encoded_ground_truth = mask.encode(fortran_ground_truth_binary_mask)
         ground_truth_area = mask.area(encoded_ground_truth)
         ground_truth_bounding_box = mask.toBbox(encoded_ground_truth)
-        contours = measure.find_contours(binary_mask, 0.5)
+        # contours = measure.find_contours(binary_mask, 0.5) ## Highest accuracy, but takes up a lot of space
+        # contours = cv2.findContours(binary_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)[0] ## Second accuracy
+        # contours = cv2.findContours(binary_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0] ## Third accuracy
+        # contours = cv2.findContours(binary_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_TC89_L1)[0] ## Fourth accuracy
+        contours = cv2.findContours(binary_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_TC89_KCOS)[0] ## Lowest accuracy, but save space
         segmentations = []
 
         for contour in contours:
